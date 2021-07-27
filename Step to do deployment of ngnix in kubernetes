@@ -1,0 +1,21 @@
+Step to do deployment of ngnix in kubernetes
+
+kubectl get nodes
+# to check the status of the cluster
+
+kubectl create deployment nginx --image=nginx
+# command to create a deployment of NGINX using the NGINX image
+
+kubectl get deployments
+# to check the state of your deployment
+
+kubectl describe deployment nginx
+#to see more detail about your deployment
+
+kubectl create service nodeport nginx --tcp=80:80
+# we want to use the NodePort Service-type because we have both a public and private IP address and we do not need an external load balancer for now. With this service-type, Kubernetes will assign this service on ports on the 30000+ range
+
+kubectl get svc
+#Run the get svc command to see a summary of the service and the ports exposed
+
+curl nodename:nodeport like 30386
